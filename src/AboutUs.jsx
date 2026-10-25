@@ -1,0 +1,5 @@
+import { Heart, Sun, Sprout } from 'lucide-react';
+
+export default function AboutUs() {
+  return <main className="page-shell about-page"><section className="about-hero"><div><p className="eyebrow dark">Our story</p><h1>Plants make<br /><em>space for life.</em></h1></div><p>Paradise Nursery began with one simple belief: a little green can change the feeling of an entire room.</p></section><section className="about-photo"><img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1600&q=85" alt="Plants arranged in a bright home" /></section><section className="values-grid"><div><Heart /><h3>More joy</h3><p>We believe the everyday becomes more beautiful when we make room for living things.</p></div><div><Sun /><h3>More light</h3><p>Our advice is honest, simple, and designed for real homes and real routines.</p></div><div><Sprout /><h3>More growth</h3><p>From first leaf to flourishing jungle, we're here for every stage of your plant journey.</p></div></section></main>;
+}
