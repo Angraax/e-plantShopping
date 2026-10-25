@@ -8,7 +8,7 @@ import { plantsArray } from './data';
 export function Navbar() {
   const cartQuantity = useSelector(selectCartCount);
   return (
-    <header className="site-header">
+    <header className="site-header navbar">
       <NavLink to="/" className="brand">
         <span className="brand-mark"><Leaf size={20} /></span>
         <span>paradise<span className="brand-accent">.</span></span>
@@ -30,6 +30,7 @@ export default function ProductList() {
   const dispatch = useDispatch();
   const cart = useSelector(selectCartItems);
   const [addedToCart, setAddedToCart] = useState({});
+  const cartQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   const handleAddToCart = (plant) => {
     dispatch(addItem(plant));
@@ -43,7 +44,7 @@ export default function ProductList() {
         <p>Small rituals, big difference. Find a plant that fits your space and your pace.</p>
       </div>
       <div className="category-tabs">
-        <span className="category-count">{cart.length} plant types in your cart</span>
+        <span className="category-count">{cartQuantity} total plants in your cart</span>
       </div>
       {plantsArray.map((category) => (
         <section className="plant-category" key={category.category}>
@@ -64,7 +65,7 @@ export default function ProductList() {
                         onClick={() => handleAddToCart(plant)}
                         className={isAdded ? 'added' : ''}
                       >
-                        {isAdded ? <><Check size={16} /> Added</> : <><Plus size={16} /> Add to cart</>}
+                        {isAdded ? <><Check size={16} /> Added to Cart</> : <><Plus size={16} /> Add to cart</>}
                       </button>
                     </div>
                   </div>

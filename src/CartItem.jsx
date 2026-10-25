@@ -14,11 +14,15 @@ export default function CartItem({ items = [] }) {
   };
 
   const handleDecrement = (item) => {
-    dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
+    if (item.quantity <= 1) {
+      handleRemove(item);
+    } else {
+      dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
+    }
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item.id));
+    dispatch(removeItem(item.name));
   };
 
   const handleContinueShopping = (event) => {
@@ -39,9 +43,9 @@ export default function CartItem({ items = [] }) {
       <div className="cart-list">
         {cart.map((item) => (
           <article className="cart-item" key={item.id}>
-            <img src={item.image} alt={item.name} />
+            <img className="cart-item-image" src={item.image} alt={item.name} />
             <div className="cart-item-details">
-              <div><p className="eyebrow dark">{item.category}</p><h3>{item.name}</h3><span className="unit-price">${item.cost} each</span></div>
+              <div><p className="eyebrow dark">{item.category}</p><h3 className="cart-item-name">{item.name}</h3><span className="unit-price cart-item-price">${item.cost} each</span></div>
               <div className="quantity-control">
                 <button type="button" aria-label={`Decrease ${item.name}`} onClick={() => handleDecrement(item)}><Minus size={15} /></button>
                 <span>{item.quantity}</span>
@@ -60,7 +64,7 @@ export default function CartItem({ items = [] }) {
         <div className="summary-line"><span>Subtotal</span><strong>${total.toFixed(2)}</strong></div>
         <div className="summary-line"><span>Delivery</span><strong>Free</strong></div>
         <div className="summary-total"><span>Total</span><strong>${total.toFixed(2)}</strong></div>
-        <button type="button" onClick={handleCheckout} className="button button-dark checkout">Checkout <Plus size={17} /></button>
+        <button type="button" onClick={handleCheckout} className="button button-dark checkout get-started-button1">Checkout <Plus size={17} /></button>
         <button type="button" onClick={handleContinueShopping} className="continue-link get-started-button"><ArrowLeft size={16} /> Continue shopping</button>
       </aside>
     </div>

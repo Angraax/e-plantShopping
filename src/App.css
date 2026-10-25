@@ -13,7 +13,11 @@ nav { display: flex; align-items: center; gap: 30px; font-size: 14px; font-weigh
 nav a { padding: 31px 0 26px; border-bottom: 2px solid transparent; } nav a:hover, nav a.active { color: #173f35; border-color: #d4855d; }
 .cart-link { display: flex; align-items: center; gap: 7px; position: relative; } .cart-badge { background: #d4855d; color: white; border-radius: 50%; width: 19px; height: 19px; display: grid; place-items: center; font-size: 11px; }
 .hero { min-height: 620px; display: grid; grid-template-columns: 48% 52%; background: #173f35; color: #f8f6ef; }
-.background-image { background-image: url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1600&q=85'); background-size: cover; background-position: center; }
+.background-image {
+  background-image: url('https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1600&q=85');
+  background-size: cover;
+  background-position: center;
+}
 .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 8vw 6vw; }
 .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 8px; color: #a9c5b7; margin: 0 0 24px; }.eyebrow.dark { color: #d4855d; }
 h1, h2, h3, p { margin-top: 0; } h1 { font-size: clamp(46px, 6vw, 82px); line-height: .98; letter-spacing: -3px; margin-bottom: 27px; } h1 em, h2 em { font-family: 'Playfair Display', serif; font-weight: 500; }
