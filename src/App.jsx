@@ -1,4 +1,5 @@
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 import { Leaf, ArrowRight, Check, Sparkles } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { plants } from './data';
@@ -7,10 +8,11 @@ import CartItem from './CartItem';
 import AboutUs from './AboutUs';
 
 function Home() {
-  const navigate = useNavigate();
-  const handleGetStartedClick = () => navigate('/shop');
+  const [showProductList, setShowProductList] = useState(false);
+  const handleGetStartedClick = () => setShowProductList(true);
+  if (showProductList) return <ProductList />;
   return (
-    <main>
+    <main className="app-container">
       <section className="hero background-image">
         <div className="hero-copy">
           <p className="eyebrow"><Sparkles size={15} /> Plants for a softer everyday</p>
