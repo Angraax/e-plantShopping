@@ -1,43 +1,22 @@
-import { useState } from 'react';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
-import { Leaf, ShoppingBag, ArrowRight, Check, Sparkles } from 'lucide-react';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { Leaf, ArrowRight, Check, Sparkles } from 'lucide-react';
 import { useSelector } from 'react-redux';
-import { selectCartCount } from './CartSlice';
 import { plants } from './data';
-import ProductList from './ProductList';
+import ProductList, { Navbar } from './ProductList';
 import CartItem from './CartItem';
 import AboutUs from './AboutUs';
 
-function Navigation() {
-  const cartCount = useSelector(selectCartCount);
-  return (
-    <header className="site-header">
-      <Link to="/" className="brand">
-        <span className="brand-mark"><Leaf size={20} /></span>
-        <span>paradise<span className="brand-accent">.</span></span>
-      </Link>
-      <nav>
-        <NavLink to="/" end>Home</NavLink>
-        <NavLink to="/shop">Shop plants</NavLink>
-        <NavLink to="/about">Our story</NavLink>
-        <NavLink to="/cart" className="cart-link">
-          <ShoppingBag size={18} /> Cart
-          {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-        </NavLink>
-      </nav>
-    </header>
-  );
-}
-
 function Home() {
+  const navigate = useNavigate();
+  const handleGetStartedClick = () => navigate('/shop');
   return (
     <main>
-      <section className="hero">
+      <section className="hero background-image">
         <div className="hero-copy">
           <p className="eyebrow"><Sparkles size={15} /> Plants for a softer everyday</p>
-          <h1>Make room<br /><em>for growth.</em></h1>
+          <h1>Welcome to Paradise Nursery</h1>
           <p className="hero-text">Thoughtfully grown houseplants and everything you need to help them thrive, delivered to your door.</p>
-          <Link to="/shop" className="button button-light">Explore the collection <ArrowRight size={18} /></Link>
+          <button type="button" onClick={handleGetStartedClick} className="button button-light get-started-button">Get Started <ArrowRight size={18} /></button>
         </div>
         <div className="hero-image-wrap">
           <img src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1200&q=85" alt="Lush green houseplants" />
@@ -63,5 +42,5 @@ function Cart() {
 }
 
 export default function App() {
-  return <><Navigation /><Routes><Route path="/" element={<Home />} /><Route path="/shop" element={<ProductList />} /><Route path="/about" element={<AboutUs />} /><Route path="/cart" element={<Cart />} /></Routes><footer><span>paradise<span className="brand-accent">.</span></span><span>Plants that make a house a home.</span></footer></>;
+  return <><Navbar /><Routes><Route path="/" element={<Home />} /><Route path="/shop" element={<ProductList />} /><Route path="/about" element={<AboutUs />} /><Route path="/cart" element={<Cart />} /></Routes><footer><span>paradise<span className="brand-accent">.</span></span><span>Plants that make a house a home.</span></footer></>;
 }

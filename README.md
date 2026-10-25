@@ -1,4 +1,7 @@
-# Paradise Nursery
+# Paradise Nursery — e-plantShopping
+
+**Project name:** Paradise Nursery  
+**Public repository:** `e-plantShopping`
 
 Paradise Nursery is a responsive React shopping cart for a modern houseplant shop. It includes a landing page, plant collection, story page, and a dynamic Redux-powered cart.
 
